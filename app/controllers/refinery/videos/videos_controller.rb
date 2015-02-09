@@ -19,6 +19,10 @@ module Refinery
 
       def search
         @videos = Video.find_with_index(params[:query].to_ascii).paginate(page: params[:page], per_page: 12)
+        respond_to do |format|
+          format.js
+          format.html
+        end
       end
 
       private
