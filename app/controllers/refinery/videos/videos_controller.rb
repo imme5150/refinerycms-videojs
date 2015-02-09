@@ -1,3 +1,5 @@
+require 'stringex'
+
 module Refinery
   module Videos
     class VideosController < ::ApplicationController
@@ -13,6 +15,10 @@ module Refinery
 
       def show
         @video = Video.find(params[:id])
+      end
+
+      def search
+        @videos = Video.find_with_index(params[:query].to_ascii).paginate(page: params[:page], per_page: 12)
       end
 
       private

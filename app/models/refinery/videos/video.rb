@@ -1,11 +1,12 @@
 require 'dragonfly'
+require 'stringex'
 
 module Refinery
   module Videos
     class Video < Refinery::Core::BaseModel
 
       self.table_name = 'refinery_videos'
-      acts_as_indexed :fields => [:title]
+      acts_as_indexed :fields => [:ascii_title]
 
       validates :title, :presence => true
       validate :one_source
@@ -85,6 +86,10 @@ module Refinery
       #################################################
 
       private
+
+      def ascii_title
+        self.title.to_ascii
+      end
 
       def set_default_config
         if new_record? && config.empty?
