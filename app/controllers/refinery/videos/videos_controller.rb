@@ -4,18 +4,16 @@ module Refinery
       before_filter :find_all_videos
 
       def index
-        #present(@page)
       end
 
       def show
         @video = Video.find(params[:id])
-        #present(@page)
       end
 
       private
 
       def find_all_videos
-        @videos = Video.order('position ASC')
+        @videos = Video.order('position ASC').paginate(page: params[:page], per_page: 12)
       end
 
       def find_page
