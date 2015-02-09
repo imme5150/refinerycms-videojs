@@ -4,12 +4,12 @@ module Refinery
       before_filter :find_all_videos
 
       def index
-        present(@page)
+        #present(@page)
       end
 
       def show
         @video = Video.find(params[:id])
-        present(@page)
+        #present(@page)
       end
 
       private
