@@ -3,7 +3,9 @@ Refinery::Core::Engine.routes.draw do
 
   # Frontend routes
   namespace :videos do
-    resources :videos, :path => '', :only => [:index, :search]
+    resources :videos, :path => '', :only => [:index] do
+      get :search
+    end
   end
 
   # Admin routes
