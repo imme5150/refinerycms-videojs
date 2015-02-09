@@ -6,7 +6,7 @@ module Refinery
       def index
         respond_to do |format|
           format.html
-          format.js {@flow = params[:flow]}
+          format.js
         end
       end
 
