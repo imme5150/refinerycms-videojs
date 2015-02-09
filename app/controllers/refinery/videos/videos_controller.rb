@@ -4,9 +4,10 @@ module Refinery
       before_filter :find_all_videos
 
       def index
+        @flow = params[:flow]
         respond_to do |format|
-          format.html
           format.js
+          format.html
         end
       end
 
