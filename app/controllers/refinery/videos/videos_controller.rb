@@ -4,11 +4,7 @@ module Refinery
       before_filter :find_all_videos
 
       def index
-        if params[:flow] == 'list'
-          render 'videos_list'
-        else
-          render 'videos_grid'
-        end          
+        @flow = params[:flow]       
       end
 
       def show
