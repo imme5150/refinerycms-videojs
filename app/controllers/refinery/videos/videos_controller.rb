@@ -3,10 +3,11 @@ require 'stringex'
 module Refinery
   module Videos
     class VideosController < ::ApplicationController
-      before_filter :find_all_videos
+#      before_filter :find_all_videos
 
       def index
         @flow = params[:flow]
+        find_all_videos
         respond_to do |format|
           format.js
           format.html
