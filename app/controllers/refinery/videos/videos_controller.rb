@@ -7,7 +7,6 @@ module Refinery
 
       def index
         @flow = params[:flow]
-        find_all_videos
         respond_to do |format|
           format.js
           format.html
@@ -19,6 +18,7 @@ module Refinery
       end
 
       def search
+        @flow = params[:flow]
         @videos = Video.with_query(params[:query].to_ascii).paginate(page: params[:page], per_page: 12)
         respond_to do |format|
           format.js { render 'refinery/videos/videos/index', videos: @videos }
