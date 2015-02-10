@@ -21,8 +21,8 @@ module Refinery
         video_ids = Video.find_with_index(params[:query].to_ascii,{},{ids_only: true})
         @videos = Video.where(id: video_ids).paginate(page: params[:page], per_page: 12)
         respond_to do |format|
-          format.js
-          format.html
+          format.js {render 'refinery/videos/videos/index'}
+          format.html {render 'refinery/videos/videos/index'}
         end
       end
 
