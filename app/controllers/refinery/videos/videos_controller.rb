@@ -20,8 +20,8 @@ module Refinery
       def search
         @videos = Video.with_query(params[:query].to_ascii).paginate(page: params[:page], per_page: 12) if not params[:noquery]
         respond_to do |format|
-          format.js
-          format.html {render 'refinery/videos/videos/index', videos: @videos}
+          format.js { render 'refinery/videos/videos/index', videos: @videos }
+          format.html { render 'refinery/videos/videos/index', videos: @videos }
         end
       end
 
