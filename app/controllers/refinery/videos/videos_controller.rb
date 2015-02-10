@@ -3,7 +3,7 @@ require 'stringex'
 module Refinery
   module Videos
     class VideosController < ::ApplicationController
-#      before_filter :find_all_videos
+      before_filter :find_all_videos
 
       def index
         @flow = params[:flow]
@@ -19,7 +19,7 @@ module Refinery
       end
 
       def search
-        @videos = Video.with_query(params[:query].to_ascii).paginate(page: params[:page], per_page: 12) if not params[:noquery]
+        @videos = Video.with_query(params[:query].to_ascii).paginate(page: params[:page], per_page: 12)
         respond_to do |format|
           format.js { render 'refinery/videos/videos/index', videos: @videos }
           format.html { render 'refinery/videos/videos/index', videos: @videos }
